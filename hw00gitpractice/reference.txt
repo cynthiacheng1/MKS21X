@@ -1,0 +1,4 @@
+git commit -m "message here"
+git clone <ssh key>
+git add -a (all the files)
+git push 
