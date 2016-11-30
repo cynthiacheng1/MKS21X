@@ -38,10 +38,11 @@ public class CirculatingBook extends LibraryBook {
 		if (!(currentHolder.equals(null) || dueDate.equals(null))) {
 			return getCurrentHolder() + "must return by " + getDueDate();
 		}
-		return "book available on shelves";
+		return "Book available on shelves";
 	}
 
 	public String toString(){
-		return "blah";
+		return getTitle() + " by " + getAuthor() + " has an ISBN number "  + getISBN()+ ". Call Number: " + getCallNumber() + " CurrentHolder: " + getCurrentHolder() + " Due Date: " + getDueDate();
+
 	}
 }

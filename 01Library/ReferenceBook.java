@@ -20,7 +20,7 @@ public class ReferenceBook extends LibraryBook {
 		collection = input;
 	}
 
-	public void checkout(String x, String y){
+	public void checkout(String patron, String due){
 		System.out.println("cannot check out a reference book");
 	}
 	public void returned(){
@@ -31,6 +31,6 @@ public class ReferenceBook extends LibraryBook {
 	}
 	public String toString(){
 		//from LibraryBook should be augmented with the collection information
-		return "blah";
+		return getTitle() + " by " + getAuthor() + " has an ISBN number "  + getISBN()+ ". Call Number: " + getCallNumber() + " Collection: " + getCollection();
 	}
 }

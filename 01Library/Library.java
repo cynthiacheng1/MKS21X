@@ -42,7 +42,7 @@ public class Library {
 	/**
 	 * sort books in the library by call number
 	 */
-	public void sortLibrary () {
+	public void sortLibrary() {
 		Collections.sort(bookList);
 	}
 
