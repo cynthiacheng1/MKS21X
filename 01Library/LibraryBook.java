@@ -11,8 +11,8 @@ public abstract class LibraryBook extends Book implements Comparable<LibraryBook
 		title = titl;
 		isbn = isbnn;
 		callNumber = callNum;
-		currentHolder = "";
-		dueDate = "";
+		currentHolder = null;
+		dueDate = null;
 	}
 
 	public String getCallNumber(){
