@@ -23,11 +23,11 @@ public class SuperArray implements Iterable<String>{
     }
 
     public boolean add(String n){
-    	size++;
         if (size == data.length){
             grow();
         }
         data[size] = n;
+        size++;
         return true;
     }
 

@@ -5,27 +5,19 @@ public class SuperArrayIterator implements Iterator<String>{
 SuperArray data;
 int element;
 
-public SuperArrayIterator(){
-	data = new SuperArray();
-	element = 0;
-}
-
 public SuperArrayIterator(SuperArray input){
 	data = input;
 	element = 0;
 }
 
 public boolean hasNext(){
-	if (data.size() > (element +1)) {
-		return true;
-	}
-	return false;
+	return data.size() > element;
 }
 
 public String next(){
-	if (hasNext()) {
-		element ++;
-		return data.get(element);
+	if (hasNext()){
+		element++;
+		return data.get(element-1);
 	}
 	else{
 		throw new NoSuchElementException();
