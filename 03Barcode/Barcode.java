@@ -4,7 +4,7 @@ public class Barcode implements Comparable<Barcode>{
     private int _checkDigit = 0;
 
     public Barcode (String zip) {
-	if ( (zip.length() != 5)|| (!(_zip.matches("[0-9]+"))) ) {
+	if ( (zip.length() != 5) || notDigit(zip)) {
 	    throw new RuntimeException();
 	}
 	else {
@@ -12,14 +12,14 @@ public class Barcode implements Comparable<Barcode>{
 	    _checkDigit = checkSum()%10;
 	}
     }
-
-    public String getZip(){
-    	return _zip;
-    }
     
-    public Barcode clone(){
-	Barcode clone = new Barcode(_zip);
-	return clone;
+    private boolean notDigit(String zip){
+    	for (int i =0; i < zip.length(); i++) {
+    		if (zip.charAt(i) > '9' || zip.charAt(i) < '0') {
+    			return true;
+    		}
+    	}
+    	return false;
     }
 
     public int checkSum(){
@@ -30,52 +30,34 @@ public class Barcode implements Comparable<Barcode>{
 	return sum;
     }
 
+
     public String toString(){
-	int num = 0;
-	String NumString= "";
-	switch (num) {
-            case 1:  NumString = ":::||";
-                     break;
-            case 2:  NumString = "::|:|";
-                     break;
-            case 3:  NumString = "::||:";
-                     break;
-            case 4:  NumString = ":|::|";
-                     break;
-            case 5:  NumString = ":|:|:";
-                     break;
-            case 6:  NumString = ":||::";
-                     break;
-            case 7:  NumString = "|:::|";
-                     break;
-            case 8:  NumString = "|::|:";
-                     break;
-            case 9:  NumString = "|:|::";
-		     break;
-	    case 0:  NumString = "||:::";
-		     break;
+    String[] Ref = new String[]{"||:::", ":::||", "::|:|", "::||:", ":|::|", ":|::|", ":||::", "|:::|", "|::|:", "|:|::"};
+	int num;
+	String numString = "|";
+	String updatedZip = _zip + _checkDigit;
+	for (int i =0; i < updatedZip.length(); i++) {
+		numString += Ref[Character.getNumericValue(updatedZip.charAt(i))];                      
 	}
-	for (int i =0; i < _zip.length(); i++) {
-		num = Character.getNumericValue(_zip.charAt(i));
-		NumString += num;                      
-	}
-	return NumString;
+	return numString + "|";
     }
 
 	public int compareTo(Barcode other) {
-		return (Integer.parseInt(_zip) - Integer.parseInt(other.getZip()));
+		return (_zip.compareTo(other._zip));
 	}
 
 	public static void main(String[]args){
 		Barcode b = new Barcode("08451");
 		Barcode c = new Barcode("99999");
-		Barcode d = new Barcode("11111");
+		// Barcode d = new Barcode("11111");
 		System.out.println(b); //084518 |||:::|::|::|::|:|:|::::|||::|:|
-		System.out.println(b.toString().compareTo("084518"));
-		//|||:::|::|::|::|:|:|::::|||::|:|")); //0
+		// System.out.println(b.toString().compareTo("084518"));
+		// //|||:::|::|::|::|:|:|::::|||::|:|")); //0
 		System.out.println(b.compareTo(b)); //0
-		System.out.println(c.compareTo(b));
-		System.out.println(d.compareTo(b));
+		System.out.println(new Barcode("58900").compareTo(new Barcode("00000")));
+		System.out.println(new Barcode("00000").compareTo(new Barcode("58900")));
+		// System.out.println(c.compareTo(b));
+		// System.out.println(d.compareTo(b));
 		/*length
 		Barcode e = new Barcode("123456");
 		System.out.println(e);
