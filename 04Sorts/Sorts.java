@@ -18,40 +18,38 @@ public class Sorts{
 	    data[time] = minimum;
 	}
     }
-    
+
     public static void insertionSort(int[] data){
-	for (int i=1; i < data.length; i ++){
-	    int check = data[i];
-	    for (int j=i-1; j >0; j--){
-		if (check < data[j]){
-		    data[j] = data[i];
-		    System.out.println("true");
-		    System.out.println(data[j]);
-		    System.out.println(data[i]);
-		}
-	        else {
-		    data[j] = check;
-		}
-	    }
-	}
+	 	for (int i=1; i < data.length; i ++){
+	 		//System.out.println("check: " + data[i] + " index:" +i);
+	 	    int check = data[i];
+	 	    for (int j=i; j >0; j--){
+	 	    	//System.out.println("before: "+data[j-1]);
+		 		if (check < data[j-1]){
+		 			//System.out.println("went through if");
+		 		    data[j] = data[j-1];
+		 		    data[j-1] = check;
+		 		}
+	 	    }
+	 	}
     }	    
-		    
-		    
+ 		    
 
     public static String toString(int[] data){
-	String ans= "[";
-	for (int i=0; i < data.length; i++){
-	    ans += data[i] +", ";
-	}
-	return ans.substring(0,ans.length()-2) + "]";
+		String ans= "[";
+			for (int i=0; i < data.length; i++){
+			    ans += data[i] +", ";
+			}
+		return ans.substring(0,ans.length()-2) + "]";
     }
 
     public static void main(String[] args){
-	int[] test = {8,5,3};
-	insertionSort(test);
-	System.out.println(toString(test));
+	int[] test = {8,5};
+	int[] test1 = {8,5,3,4,9,0};
+	insertionSort(test1);
+	System.out.println(toString(test1));
 	int[] test2 = {10,9,8,7,6,5,4};
-	selectionSort(test2);
+	insertionSort(test2);
 	System.out.println(toString(test2));
     }
 }
