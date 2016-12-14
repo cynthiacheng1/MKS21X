@@ -18,6 +18,25 @@ public class Sorts{
 	    data[time] = minimum;
 	}
     }
+    
+    public static void insertionSort(int[] data){
+	for (int i=1; i < data.length; i ++){
+	    int check = data[i];
+	    for (int j=i-1; j >0; j--){
+		if (check < data[j]){
+		    data[j] = data[i];
+		    System.out.println("true");
+		    System.out.println(data[j]);
+		    System.out.println(data[i]);
+		}
+	        else {
+		    data[j] = check;
+		}
+	    }
+	}
+    }	    
+		    
+		    
 
     public static String toString(int[] data){
 	String ans= "[";
@@ -28,8 +47,8 @@ public class Sorts{
     }
 
     public static void main(String[] args){
-	int[] test = {8,5,3,4,6,10,0};
-	selectionSort(test);
+	int[] test = {8,5,3};
+	insertionSort(test);
 	System.out.println(toString(test));
 	int[] test2 = {10,9,8,7,6,5,4};
 	selectionSort(test2);
