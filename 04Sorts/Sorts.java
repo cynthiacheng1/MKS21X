@@ -30,30 +30,27 @@ public class Sorts{
 		 		    data[j] = data[j-1];
 		 		    data[j-1] = check;
 		 		}
-				else {
-				    break;
-				}
 	 	    }
 	 	}
     }	    
- 		    
-    public static void bubbleSort(int[] data){
-	int sorted=1;
-	while (sorted > 0){
-	    for (int i =1; i < data.length; i++){
-		sorted = 0;
-		int temp = data[i];
-		if (data[i] < data[i-1]){
-		    data[i] = data[i-1];
-		    data[i-1] = temp;
-		    sorted ++;
-		}
-	    }
-	}
-    }
 
-		    
-	    
+    public static void bubbleSort(int[] data){
+        int sorted=1;
+        while (sorted > 0){
+        	sorted = 0;
+            for (int i =1; i < data.length; i++){
+                int temp = data[i];
+                //System.out.println("num i'm lookin at " +temp);
+                if (data[i] < data[i-1]){
+                    data[i] = data[i-1];
+                    data[i-1] = temp;
+                    sorted ++;
+                    //System.out.println(sorted);
+                }
+                //System.out.println(sorted);
+            }
+        }
+    }
 
     public static String toString(int[] data){
 		String ans= "[";
@@ -64,12 +61,12 @@ public class Sorts{
     }
 
     public static void main(String[] args){
-	int[] test = {8,5,3,4};
-	int[] test1 = {8,5,3,4,9,0};
-	bubbleSort(test1);
-	System.out.println(toString(test1));
-	int[] test2 = {10,9,8,7,6,5,4};
-	bubbleSort(test2);
-	System.out.println(toString(test2));
+		int[] test = {8,5};
+		int[] test1 = {8,5,3,4,9,0};
+		bubbleSort(test1);
+		System.out.println(toString(test1));
+		int[] test2 = {10,9,8,7,6,5,4};
+		bubbleSort(test2);
+		System.out.println(toString(test2));
     }
 }
